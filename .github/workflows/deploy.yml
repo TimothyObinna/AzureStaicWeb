@@ -1,0 +1,27 @@
+name: Deploy Static Website to Azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Upload files to Azure Storage
+      run: |
+        az storage blob upload-batch \
+          --account-name obistaticweb \
+          --destination '$web' \
+          --source .
