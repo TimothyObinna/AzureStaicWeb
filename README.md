@@ -2,11 +2,6 @@ This is my azure static website deployment project.
 Its objective is to deploy a static websit to azure using CLI.
 
 
-Requirement:
-Create an azure account.
-Create a resource group.
-
-
 step 1
 
 On your terminal, Run: 
